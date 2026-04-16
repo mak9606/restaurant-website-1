@@ -2,21 +2,21 @@
 
 import { useState } from "react";
 import { menuItems, tastingMenus, type MenuItem } from "@/lib/data";
-
+import { motion } from "framer-motion";
 type Category = "starters" | "mains" | "desserts" | "tasting";
 
 const categories: { id: Category; label: string }[] = [
   { id: "starters", label: "Starters" },
   { id: "mains", label: "Main Courses" },
   { id: "desserts", label: "Desserts" },
-  { id: "tasting", label: "Tasting Menus" }
+  { id: "tasting", label: "Tasting Menus" },
 ];
 
 export default function Menu() {
   const [active, setActive] = useState<Category>("starters");
-
   const filtered = menuItems.filter((item) => item.category === active);
-
+  // console.log(filtered, "filtered");
+  console.log(active, "active");
   return (
     <section id="menu" className="py-32 bg-charcoal-900 relative">
       {/* Gold accent line */}
@@ -24,7 +24,12 @@ export default function Menu() {
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16 reveal">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0, transitionDelay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 "
+        >
           <p className="section-label mb-4">Seasonal Menus</p>
           <div className="divider-gold mb-6" />
           <h2 className="font-display text-5xl md:text-6xl font-light text-cream">
@@ -35,10 +40,15 @@ export default function Menu() {
             Our menus change with the seasons, honouring the finest ingredients
             at their peak of perfection.
           </p>
-        </div>
+        </motion.div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-1 mb-14 reveal">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0, transitionDelay: 0.4 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-1 mb-14"
+        >
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -52,7 +62,7 @@ export default function Menu() {
               {cat.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Menu Items */}
         {active !== "tasting" ? (
@@ -67,8 +77,8 @@ export default function Menu() {
 
         {/* Footer note */}
         <p className="text-center font-body text-charcoal-500 text-xs mt-12 tracking-wide reveal">
-          All prices are per person and exclude beverages, taxes, and service charge.
-          Menu subject to seasonal change.
+          All prices are per person and exclude beverages, taxes, and service
+          charge. Menu subject to seasonal change.
         </p>
       </div>
     </section>
@@ -77,9 +87,11 @@ export default function Menu() {
 
 function MenuItemCard({ item, index }: { item: MenuItem; index: number }) {
   return (
-    <div
-      className="reveal py-7 border-b border-white/8 group"
-      style={{ transitionDelay: `${index * 60}ms` }}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className=" py-7 border-b border-white/8 group"
     >
       <div className="flex items-start justify-between gap-6">
         <div className="flex-1">
@@ -101,7 +113,7 @@ function MenuItemCard({ item, index }: { item: MenuItem; index: number }) {
           ${item.price}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -109,9 +121,12 @@ function TastingMenus() {
   return (
     <div className="grid md:grid-cols-3 gap-6">
       {tastingMenus.map((menu, i) => (
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.2 }}
           key={menu.name}
-          className={`reveal border p-8 relative overflow-hidden group transition-all duration-500 ${
+          className={` border p-6 lg:p-8 relative overflow-hidden group transition-all duration-500 ${
             i === 0
               ? "border-gold-500/50 bg-gold-500/5"
               : "border-white/10 hover:border-gold-500/30"
@@ -128,13 +143,14 @@ function TastingMenus() {
             <h3 className="font-display text-3xl font-medium text-cream mb-2">
               {menu.name}
             </h3>
-            {menu.tag && (
-              <span className="font-body text-[10px] tracking-widest uppercase text-gold-500 border border-gold-500/40 px-2 py-0.5">
-                {menu.tag}
-              </span>
-            )}
+
+            <span
+              className={` ${menu.tag ? "visible border border-gold-500/40" : "invisible"} font-body text-[10px] tracking-widest uppercase text-gold-500  px-2 py-0.5`}
+            >
+              {menu.tag}
+            </span>
           </div>
-          <p className="font-body text-charcoal-400 text-sm leading-relaxed mb-8">
+          <p className="font-body text-charcoal-400 text-xs lg:text-sm leading-relaxed mb-8">
             {menu.description}
           </p>
           <div className="border-t border-white/10 pt-6">
@@ -149,11 +165,14 @@ function TastingMenus() {
             <p className="font-body text-charcoal-500 text-xs mb-6">
               Wine pairing +${menu.wines}
             </p>
-            <a href="#reservations" className="btn-primary w-full justify-center text-xs py-3">
+            <a
+              href="#reservations"
+              className="btn-primary px-4 lg:px-8 w-full justify-center text-xs py-3"
+            >
               Book This Menu
             </a>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

@@ -1,13 +1,20 @@
 import Image from "next/image";
-
+import aboutImage from "@/public/aboutImage.png";
 export default function About() {
   return (
-    <section id="about" className="py-32 bg-charcoal-950 relative overflow-hidden">
+    <section
+      id="about"
+      className="py-32 bg-charcoal-950 relative overflow-hidden"
+    >
       {/* Background texture */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "radial-gradient(circle at 1px 1px, #d4891a 1px, transparent 0)",
-        backgroundSize: "48px 48px"
-      }} />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #d4891a 1px, transparent 0)",
+          backgroundSize: "48px 48px",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -26,7 +33,7 @@ export default function About() {
           <div className="relative reveal-left">
             <div className="relative h-[600px] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=900&q=80"
+                src={aboutImage}
                 alt="Chef Laurent in the kitchen"
                 fill
                 className="object-cover"
@@ -38,7 +45,8 @@ export default function About() {
             <div className="absolute -bottom-6 -right-6 bg-gold-500 text-charcoal-950 p-8 font-display">
               <div className="text-5xl font-bold leading-none">25</div>
               <div className="text-sm font-body font-medium tracking-widest uppercase mt-1">
-                Years of <br />Excellence
+                Years of <br />
+                Excellence
               </div>
             </div>
             {/* Decorative border */}
@@ -76,12 +84,9 @@ export default function About() {
             { number: "800+", label: "Wine Labels" },
             { number: "12", label: "Seasonal Menus" },
             { number: "40", label: "Covers Nightly" },
-            { number: "98%", label: "Guest Satisfaction" }
+            { number: "98%", label: "Guest Satisfaction" },
           ].map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center reveal"
-            >
+            <div key={stat.label} className="text-center reveal">
               <div className="font-display text-5xl font-light text-gold-400 mb-2">
                 {stat.number}
               </div>

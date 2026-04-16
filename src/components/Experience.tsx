@@ -1,30 +1,30 @@
 import Image from "next/image";
-
+import experienceImage from "@/public/experienceImage.png";
 const pillars = [
   {
     number: "01",
     title: "Seasonal Provenance",
     description:
-      "Every ingredient is sourced within 150 miles. We collaborate directly with farmers, fishers, and foragers to ensure peak quality."
+      "Every ingredient is sourced within 150 miles. We collaborate directly with farmers, fishers, and foragers to ensure peak quality.",
   },
   {
     number: "02",
     title: "Classical Technique",
     description:
-      "Our kitchen honours centuries of French culinary tradition — stocks simmered for 36 hours, pastry made fresh each morning."
+      "Our kitchen honours centuries of French culinary tradition — stocks simmered for 36 hours, pastry made fresh each morning.",
   },
   {
     number: "03",
     title: "Curated Cellar",
     description:
-      "Over 800 labels, including rare Burgundies and natural wines from small-production domaines handpicked by our sommelier."
+      "Over 800 labels, including rare Burgundies and natural wines from small-production domaines handpicked by our sommelier.",
   },
   {
     number: "04",
     title: "Intimate Setting",
     description:
-      "With only 40 covers each evening, every guest receives the complete attention of our entire team throughout the meal."
-  }
+      "With only 40 covers each evening, every guest receives the complete attention of our entire team throughout the meal.",
+  },
 ];
 
 export default function Experience() {
@@ -34,7 +34,7 @@ export default function Experience() {
       <div className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80"
+            src={experienceImage}
             alt="Restaurant ambiance"
             fill
             className="object-cover"

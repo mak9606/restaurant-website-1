@@ -1,4 +1,5 @@
 import Image from "next/image";
+import heroImage from "@/public/heroImage.png";
 
 export default function Hero() {
   return (
@@ -6,7 +7,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=90"
+          src={heroImage}
           alt="Maison Laurent fine dining"
           fill
           priority
@@ -40,8 +41,8 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="font-body text-charcoal-200 text-lg font-light max-w-xl mx-auto leading-relaxed mb-12 animate-fade-up animate-delay-200">
-          Contemporary French cuisine crafted with seasonal ingredients,
-          artisan techniques, and an unwavering pursuit of perfection.
+          Contemporary French cuisine crafted with seasonal ingredients, artisan
+          techniques, and an unwavering pursuit of perfection.
         </p>
 
         {/* CTAs */}
@@ -99,7 +100,11 @@ function ArrowRight() {
 
 function StarIcon() {
   return (
-    <svg className="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+    <svg
+      className="w-5 h-5 text-gold-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
     </svg>
   );
